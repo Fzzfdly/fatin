@@ -53,6 +53,11 @@
             min-height: 350px;
         }
 
+        .start-gif {
+            width: 180px;
+            margin-bottom: 15px;
+        }
+
         h1 {
             color: #d87093;
             font-size: 2.2em;
@@ -89,23 +94,61 @@
             box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
         }
 
+        /* Pulsing Yes Button */
         .btn-yes {
             background: linear-gradient(135deg, #d87093, #ff69b4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(216, 112, 147, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(216, 112, 147, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(216, 112, 147, 0); }
         }
 
         .btn-yes:hover {
             transform: translateY(-3px) scale(1.05);
+            animation: none; /* Stop pulsing when hovering */
             box-shadow: 0 6px 20px rgba(216, 112, 147, 0.6);
         }
 
+        /* No Button */
         .btn-no {
             background: #e0e0e0;
             color: #666;
             box-shadow: none;
+            position: relative;
         }
 
         .btn-no:hover {
             background: #d5d5d5;
+        }
+
+        /* Shaking Animation for No Button */
+        .shake {
+            animation: shakeBtn 0.4s ease-in-out;
+        }
+
+        @keyframes shakeBtn {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-8px) rotate(-3deg); }
+            50% { transform: translateX(8px) rotate(3deg); }
+            75% { transform: translateX(-8px) rotate(-3deg); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Floating Broken Hearts Animation */
+        .broken-heart {
+            position: fixed;
+            font-size: 2.5rem;
+            pointer-events: none;
+            animation: floatUp 2s ease-out forwards;
+            z-index: 100;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
         }
 
         /* Success Screen */
@@ -119,7 +162,7 @@
             margin-bottom: 20px;
         }
 
-        /* Floating Hearts Animation */
+        /* Floating Happy Hearts Animation */
         .floating-item {
             position: fixed;
             top: -10vh;
@@ -217,21 +260,12 @@
             font-weight: bold;
             margin: 0;
             transition: all 0.6s ease;
-            position: absolute; /* Hide structural space until revealed */
+            position: absolute; 
             visibility: hidden;
         }
 
-        /* When clicked */
-        .mystery-box.revealed .mystery-hint {
-            display: none;
-        }
-
-        .mystery-box.revealed .mystery-text {
-            filter: blur(0);
-            opacity: 1;
-            position: relative;
-            visibility: visible;
-        }
+        .mystery-box.revealed .mystery-hint { display: none; }
+        .mystery-box.revealed .mystery-text { filter: blur(0); opacity: 1; position: relative; visibility: visible; }
 
         .love-note { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 25px; border-radius: 16px; text-align: center; font-style: italic; font-size: 1.1em; line-height: 1.5; box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3); }
     </style>
@@ -243,6 +277,8 @@
     </audio>
 
     <div class="container centered-screen" id="proposal-screen">
+        <img src="https://media.tenor.com/7123L27x5H8AAAAi/milk-and-mocha-cute.gif" alt="Shy Bear" class="start-gif" id="start-gif">
+        
         <h1>Hi Fatin 💗</h1>
         <p class="subtitle" id="proposal-text">May I take my princess on a date this Saturday?</p>
         
@@ -367,19 +403,51 @@
             let btnNo = document.getElementById('btn-no');
             let btnYes = document.getElementById('btn-yes');
             let propText = document.getElementById('proposal-text');
+            let startGif = document.getElementById('start-gif');
+
+            // Trigger the shake animation
+            btnNo.classList.remove('shake');
+            void btnNo.offsetWidth; // Force a browser reflow to restart animation
+            btnNo.classList.add('shake');
+
+            // Spawn floating broken hearts
+            spawnBrokenHearts();
 
             if (noCount < 5) {
                 btnNo.innerText = noMessages[noCount];
+                
+                // Grow the Yes button
                 let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
                 let newSize = parseFloat(currentSize) * 1.2; 
                 btnYes.style.fontSize = newSize + 'px';
                 btnYes.style.padding = (newSize * 0.8) + 'px ' + (newSize * 2) + 'px';
+                
+                // Change the gif to crying bear on the 4th click
+                if(noCount === 4) {
+                    startGif.src = "https://media.tenor.com/TttijE2P-9kAAAAi/tkthao219-bubududu.gif";
+                }
+
             } else {
                 btnNo.innerText = noMessages[5];
                 btnNo.classList.remove('btn-no');
                 btnNo.classList.add('btn-yes');
                 btnNo.onclick = acceptDate; 
                 propText.innerText = "Okay fine, you leave me no choice! 😤💖";
+            }
+        }
+
+        function spawnBrokenHearts() {
+            for(let i=0; i<3; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('broken-heart');
+                heart.innerText = '💔';
+                // Random position near the bottom center
+                heart.style.left = (Math.random() * 40 + 30) + 'vw'; 
+                heart.style.top = '80vh';
+                document.body.appendChild(heart);
+                
+                // Remove from memory after animation
+                setTimeout(() => { heart.remove(); }, 2000);
             }
         }
 
@@ -391,7 +459,7 @@
             audio.volume = 0.5;
             audio.play().catch(e => console.log("Audio block:", e));
 
-            // Start the floating hearts animation
+            // Start the floating happy hearts animation
             startFloatingHearts();
         }
 
@@ -418,33 +486,28 @@
                 
                 document.body.appendChild(item);
                 
-                // Remove it from the code once it falls off screen
                 setTimeout(() => { item.remove(); }, 7000);
-            }, 400); // Spawns a new item every 400ms
+            }, 400); 
         }
 
         // --- 3. COUNTDOWN TIMER LOGIC ---
         function startCountdown() {
-            // Set the date we're counting down to: March 28, 2026, 10:00:00 AM
             const targetDate = new Date("March 28, 2026 10:00:00").getTime();
 
             const x = setInterval(function() {
                 const now = new Date().getTime();
                 const distance = targetDate - now;
 
-                // Time calculations
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                // Output the result
                 document.getElementById("days").innerText = days.toString().padStart(2, '0');
                 document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
                 document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
                 document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
 
-                // If the countdown is over, display a message
                 if (distance < 0) {
                     clearInterval(x);
                     document.getElementById("countdown").innerHTML = "<h2 style='margin:0;'>It's time for our date! 💖🚗</h2>";
