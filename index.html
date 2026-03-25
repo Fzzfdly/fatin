@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Invitation 💗</title>
+    <title>A Special Question... 💗</title>
     <style>
         /* Animated Gradient Background */
         body {
@@ -18,6 +18,7 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: #4a4a4a;
+            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
@@ -41,166 +42,98 @@
             margin: 30px 0;
         }
 
-        /* Surprise Screen */
-        #surprise-screen {
+        /* Centered Screens (Proposal & Success) */
+        .centered-screen {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 400px;
+            min-height: 350px;
         }
 
         h1 {
             color: #d87093;
-            font-size: 2.4em;
-            margin-bottom: 5px;
+            font-size: 2.2em;
+            margin-bottom: 10px;
             margin-top: 0;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
+        p.subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
         .btn {
-            background: linear-gradient(135deg, #d87093, #ff69b4);
             color: white;
             border: none;
-            padding: 16px 40px;
+            padding: 15px 35px;
             font-size: 1.2em;
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
-            margin-top: 25px;
         }
 
-        .btn:hover {
+        .btn-yes {
+            background: linear-gradient(135deg, #d87093, #ff69b4);
+        }
+
+        .btn-yes:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 6px 20px rgba(216, 112, 147, 0.6);
         }
 
-        /* Itinerary Screen */
-        #itinerary-screen {
+        .btn-no {
+            background: #e0e0e0;
+            color: #666;
+            box-shadow: none;
+        }
+
+        .btn-no:hover {
+            background: #d5d5d5;
+        }
+
+        /* Success Screen */
+        #success-screen, #itinerary-screen {
             display: none;
-            animation: fadeIn 0.8s ease-in;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .date-header {
-            border-bottom: 2px dashed #ffb6c1;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
-
-        .date-header p {
-            font-size: 1.1em;
-            color: #d87093;
-            font-weight: bold;
-            margin: 5px 0;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            color: #d87093;
-            font-size: 1.4em;
-            margin-top: 10px;
+        .success-gif {
+            width: 200px;
+            border-radius: 15px;
             margin-bottom: 20px;
         }
 
-        /* Beautiful Card Timeline Layout */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 35px;
-            text-align: left;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            padding: 14px 18px;
-            border-radius: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            transition: all 0.2s ease;
-        }
-
-        .timeline-item:hover {
-            transform: scale(1.02);
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 6px 15px rgba(216, 112, 147, 0.15);
-        }
-
-        .time-badge {
-            background: linear-gradient(135deg, #d87093, #ff69b4);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9em;
-            min-width: 70px;
-            text-align: center;
-            margin-right: 18px;
-            box-shadow: 0 2px 5px rgba(216, 112, 147, 0.3);
-        }
-
-        .task-content {
-            font-size: 1.05em;
-            color: #4a4a4a;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* Reminders Box */
-        .reminders {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
-            text-align: left;
-        }
-
-        .reminders ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .reminders li {
-            padding: 8px 0;
-            font-size: 1em;
-            border-bottom: 1px dashed #ffe4e1;
-            display: flex;
-            align-items: center;
-        }
-
-        .reminders li:last-child {
-            border-bottom: none;
-        }
-
-        .reminders li::before {
-            content: '✨';
-            margin-right: 10px;
-            font-size: 0.9em;
-        }
-
-        /* Love Note */
-        .love-note {
-            background: linear-gradient(135deg, #d87093, #ff69b4);
-            color: white;
-            padding: 25px;
-            border-radius: 16px;
-            text-align: center;
-            font-style: italic;
-            font-size: 1.1em;
-            line-height: 1.5;
-            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
-        }
+        /* Itinerary Styling (Kept exactly the same) */
+        #itinerary-screen { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .date-header { border-bottom: 2px dashed #ffb6c1; padding-bottom: 15px; margin-bottom: 25px; }
+        .date-header p { font-size: 1.1em; color: #d87093; font-weight: bold; margin: 5px 0; letter-spacing: 1px; }
+        h2 { color: #d87093; font-size: 1.4em; margin-top: 10px; margin-bottom: 20px; }
+        .timeline { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; text-align: left; }
+        .timeline-item { display: flex; align-items: center; background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.9); padding: 14px 18px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.2s ease; }
+        .timeline-item:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.95); box-shadow: 0 6px 15px rgba(216, 112, 147, 0.15); }
+        .time-badge { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9em; min-width: 70px; text-align: center; margin-right: 18px; box-shadow: 0 2px 5px rgba(216, 112, 147, 0.3); }
+        .task-content { font-size: 1.05em; color: #4a4a4a; font-weight: 500; line-height: 1.4; }
+        .reminders { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 16px; margin-bottom: 25px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); text-align: left; }
+        .reminders ul { list-style-type: none; padding: 0; margin: 0; }
+        .reminders li { padding: 8px 0; font-size: 1em; border-bottom: 1px dashed #ffe4e1; display: flex; align-items: center; }
+        .reminders li:last-child { border-bottom: none; }
+        .reminders li::before { content: '✨'; margin-right: 10px; font-size: 0.9em; }
+        .love-note { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 25px; border-radius: 16px; text-align: center; font-style: italic; font-size: 1.1em; line-height: 1.5; box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3); }
     </style>
 </head>
 <body>
@@ -209,10 +142,21 @@
         <source src="music.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="container" id="surprise-screen">
+    <div class="container centered-screen" id="proposal-screen">
         <h1>Hi Fatin 💗</h1>
-        <p>I have something special planned for us...</p>
-        <button class="btn" onclick="revealDate()">Unlock Invitation 🗝️</button>
+        <p class="subtitle" id="proposal-text">May I take my princess on a date this Saturday?</p>
+        
+        <div class="btn-group">
+            <button class="btn btn-yes" id="btn-yes" onclick="acceptDate()">Yes! 🥰</button>
+            <button class="btn btn-no" id="btn-no" onclick="rejectDate()">No</button>
+        </div>
+    </div>
+
+    <div class="container centered-screen" id="success-screen">
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Cute Bears Kissing" class="success-gif">
+        <h1>Yay! 🎉</h1>
+        <p class="subtitle">Thank you for saying yes! I can't wait.</p>
+        <button class="btn btn-yes" onclick="revealItinerary()">See our date plan 🗺️</button>
     </div>
 
     <div class="container" id="itinerary-screen">
@@ -295,17 +239,61 @@
     </div>
 
     <script>
-        function revealDate() {
-            // Hide surprise screen and show itinerary
-            document.getElementById('surprise-screen').style.display = 'none';
-            document.getElementById('itinerary-screen').style.display = 'block';
+        // Logic for the interactive "No" button
+        let noCount = 0;
+        const noMessages = [
+            "No",
+            "Will you consider? 🥺",
+            "Pleaseeeee 😭",
+            "I'll buy you good food!",
+            "You're breaking my heart 💔",
+            "Yes 🥰" // The 5th click turns it into a Yes!
+        ];
+
+        function rejectDate() {
+            noCount++;
+            let btnNo = document.getElementById('btn-no');
+            let btnYes = document.getElementById('btn-yes');
+            let propText = document.getElementById('proposal-text');
+
+            if (noCount < 5) {
+                // Change the text of the No button
+                btnNo.innerText = noMessages[noCount];
+                
+                // Make the Yes button slightly bigger each time!
+                let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
+                let newSize = parseFloat(currentSize) * 1.2; 
+                btnYes.style.fontSize = newSize + 'px';
+                btnYes.style.padding = (newSize * 0.8) + 'px ' + (newSize * 2) + 'px';
+                
+            } else {
+                // On the 5th click, force the No button to become a Yes button
+                btnNo.innerText = noMessages[5];
+                btnNo.classList.remove('btn-no');
+                btnNo.classList.add('btn-yes');
+                btnNo.onclick = acceptDate; // Change its function so it actually accepts!
+                propText.innerText = "Okay fine, you leave me no choice! 😤💖";
+            }
+        }
+
+        function acceptDate() {
+            // Hide proposal, show success
+            document.getElementById('proposal-screen').style.display = 'none';
+            document.getElementById('success-screen').style.display = 'flex';
             
             // Play the music!
             var audio = document.getElementById("bg-music");
-            audio.volume = 0.5; // Sets volume to 50%
+            audio.volume = 0.5;
             audio.play().catch(function(error) {
-                console.log("Audio play failed (browser policy):", error);
+                console.log("Audio play failed:", error);
             });
+        }
+
+        function revealItinerary() {
+            // Hide success, show itinerary
+            document.getElementById('success-screen').style.display = 'none';
+            document.getElementById('itinerary-screen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 
