@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Invitation 💗</title>
+    <style>
+        /* Animated Gradient Background */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ffc0cb, #ffe4e1, #ffb6c1, #ff69b4);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #4a4a4a;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 900px;
+            width: 95%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 25px 35px;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 20px 0;
+        }
+
+        /* Surprise Screen */
+        #surprise-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+        }
+
+        h1 {
+            color: #d87093;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #d87093, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
+            margin-top: 25px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(216, 112, 147, 0.6);
+        }
+
+        /* Itinerary Screen */
+        #itinerary-screen {
+            display: none;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .date-header {
+            border-bottom: 2px dashed #ffb6c1;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .date-header p {
+            font-size: 1.1em;
+            color: #d87093;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        /* Two Column Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+        }
+
+        h2 {
+            color: #d87093;
+            font-size: 1.3em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ffe4e1;
+            padding-bottom: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Compact Itinerary Items */
+        .itinerary-list li {
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95em;
+            transition: transform 0.2s;
+        }
+        
+        .itinerary-list li:hover {
+            transform: translateX(5px);
+            color: #d87093;
+        }
+
+        .time {
+            font-weight: bold;
+            color: #d87093;
+            min-width: 75px;
+            margin-right: 10px;
+        }
+
+        /* Styling for Quests & Reminders */
+        .side-quests ul, .reminders ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .side-quests li, .reminders li {
+            padding: 4px 0;
+            font-size: 0.95em;
+        }
+
+        .section-box {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .love-note {
+            background: linear-gradient(135deg, #d87093, #ff69b4);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.05em;
+            line-height: 1.4;
+            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3);
+            margin-top: 10px;
+        }
+
+        /* Responsive for mobile screens */
+        @media (max-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr; gap: 15px; }
+            body { height: auto; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container" id="surprise-screen">
+        <h1>Hi Fatin 💗</h1>
+        <p>I have something special planned for us...</p>
+        <button class="btn" onclick="revealDate()">Unlock Invitation 🗝️</button>
+    </div>
+
+    <div class="container" id="itinerary-screen">
+        <div class="date-header">
+            <h1>Our Next Adventure ✨</h1>
+            <p>Saturday, 28th of March 2026</p>
+        </div>
+
+        <div class="grid-layout">
+            <div class="column">
+                <h2>The Itinerary 🗺️</h2>
+                <ul class="itinerary-list">
+                    <li><span class="time">10:00 AM</span> <span>Pick Up My Princess 💗</span></li>
+                    <li><span class="time">10:30 AM</span> <span>Breakfast at Tea Garden? 🥞</span></li>
+                    <li><span class="time">11:00 AM</span> <span>Pictures at Parkland! 📷</span></li>
+                    <li><span class="time">12:00 PM</span> <span>Singgah Maybank and City Trading</span></li>
+                    <li><span class="time">12:30 PM</span> <span>Jalan Jalan at Taman depan City Trading (also do the cop jari!)</span></li>
+                    <li><span class="time">1:00 PM</span> <span>Photobooth Kluang Mall</span></li>
+                    <li><span class="time">1:10 PM</span> <span>Secret Recipe Kluang Mall</span></li>
+                    <li><span class="time">1:40 PM</span> <span>Solat Zohor</span></li>
+                    <li><span class="time">2:10 PM</span> <span>Sandals/Shoes and Baju Hunting!</span></li>
+                    <li><span class="time">3:30 PM</span> <span>Jalan from KM to Kenangan Coffee and Book Updates!</span></li>
+                    <li><span class="time">5:00 PM</span> <span>Woodfire</span></li>
+                    <li><span class="time">5:30 PM</span> <span>Family Mart!</span></li>
+                    <li><span class="time">6:00 PM</span> <span>Balik 🥀</span></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <div class="section-box side-quests">
+                    <h2>Side Quests 🎯</h2>
+                    <ul>
+                        <li>Beli Sandal</li>
+                        <li>Beli 2 water paint (more is better)</li>
+                        <li>ATM Maybank (tabung haji)</li>
+                        <li>Look for shoess!</li>
+                        <li>Cari baju (again) and possibly seluar slack</li>
+                    </ul>
+                </div>
+
+                <div class="section-box reminders">
+                    <h2>Reminders 📝</h2>
+                    <ul>
+                        <li>Wear our promise ring! 💍</li>
+                        <li>Bring our book and stationary! as well as coloured pencil! 📚</li>
+                        <li>Bring a water bottle, tissue and polysterin cup for the water color 💧</li>
+                        <li>Do the 1-10 Trend! 🎬</li>
+                        <li>Bring an umbrella, and also a cap just in case! ☔</li>
+                    </ul>
+                </div>
+
+                <div class="love-note">
+                    "Be my princess for the day. Let's laugh, smile and enjoy every moment together, and go home without any regrets! ❤️"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function revealDate() {
+            // Hide surprise screen and show itinerary
+            document.getElementById('surprise-screen').style.display = 'none';
+            document.getElementById('itinerary-screen').style.display = 'block';
+            
+            // Play the music!
+            var audio = document.getElementById("bg-music");
+            audio.volume = 0.5; // Sets volume to 50%
+            audio.play().catch(function(error) {
+                console.log("Audio play failed (browser policy):", error);
+            });
+        }
+    </script>
+
+</body>
+</html>
