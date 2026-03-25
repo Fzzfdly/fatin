@@ -56,6 +56,7 @@
         .start-gif {
             width: 180px;
             margin-bottom: 15px;
+            border-radius: 10px;
         }
 
         h1 {
@@ -277,7 +278,7 @@
     </audio>
 
     <div class="container centered-screen" id="proposal-screen">
-        <img src="https://media1.tenor.com/m/7123L27x5H8AAAAC/milk-and-mocha-cute.gif" alt="Shy Bear" class="start-gif" id="start-gif">
+        <img src="https://media.giphy.com/media/mGooVREx5l5I5JkKz4/giphy.gif" alt="Shy Bear" class="start-gif" id="start-gif">
         
         <h1>Hi Fatin 💗</h1>
         <p class="subtitle" id="proposal-text">May I take my princess on a date this Saturday?</p>
@@ -289,7 +290,7 @@
     </div>
 
     <div class="container centered-screen" id="success-screen">
-        <img src="https://media1.tenor.com/m/gUiu1zyxfzYAAAAC/bear-kiss-bear-kisses.gif" alt="Cute Bears Kissing" class="success-gif">
+        <img src="https://media.giphy.com/media/Zdg12E6B1D04vQ3LqI/giphy.gif" alt="Cute Bears Kissing" class="success-gif">
         <h1>Yay! 🎉</h1>
         <p class="subtitle">Thank you for saying yes! I can't wait.</p>
         <button class="btn btn-yes" onclick="revealItinerary()">See our date plan 🗺️</button>
@@ -422,9 +423,9 @@
                 btnYes.style.fontSize = newSize + 'px';
                 btnYes.style.padding = (newSize * 0.8) + 'px ' + (newSize * 2) + 'px';
                 
-                // FIXED: Change the gif to crying bear on the 4th click
+                // FIXED: Change the gif to Giphy crying bear on the 4th click
                 if(noCount === 4) {
-                    startGif.src = "https://media1.tenor.com/m/TttijE2P-9kAAAAC/tkthao219-bubududu.gif";
+                    startGif.src = "https://media.giphy.com/media/3o6wrvdHFbwBrUFenu/giphy.gif";
                 }
 
             } else {
