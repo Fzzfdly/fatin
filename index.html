@@ -40,6 +40,8 @@
             text-align: center;
             box-sizing: border-box;
             margin: 30px 0;
+            position: relative;
+            z-index: 10;
         }
 
         /* Centered Screens (Proposal & Success) */
@@ -117,10 +119,57 @@
             margin-bottom: 20px;
         }
 
-        /* Itinerary Styling (Kept exactly the same) */
+        /* Floating Hearts Animation */
+        .floating-item {
+            position: fixed;
+            top: -10vh;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: floatDown linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatDown {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .time-box {
+            background: rgba(216, 112, 147, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            color: #d87093;
+            border: 1px solid rgba(216, 112, 147, 0.3);
+            min-width: 55px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        .time-box small {
+            font-size: 0.7em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: bold;
+        }
+
+        /* Itinerary Styling */
         #itinerary-screen { animation: fadeIn 0.8s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .date-header { border-bottom: 2px dashed #ffb6c1; padding-bottom: 15px; margin-bottom: 25px; }
+        .date-header { border-bottom: 2px dashed #ffb6c1; padding-bottom: 15px; margin-bottom: 20px; }
         .date-header p { font-size: 1.1em; color: #d87093; font-weight: bold; margin: 5px 0; letter-spacing: 1px; }
         h2 { color: #d87093; font-size: 1.4em; margin-top: 10px; margin-bottom: 20px; }
         .timeline { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; text-align: left; }
@@ -128,11 +177,62 @@
         .timeline-item:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.95); box-shadow: 0 6px 15px rgba(216, 112, 147, 0.15); }
         .time-badge { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9em; min-width: 70px; text-align: center; margin-right: 18px; box-shadow: 0 2px 5px rgba(216, 112, 147, 0.3); }
         .task-content { font-size: 1.05em; color: #4a4a4a; font-weight: 500; line-height: 1.4; }
+        
         .reminders { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 16px; margin-bottom: 25px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); text-align: left; }
         .reminders ul { list-style-type: none; padding: 0; margin: 0; }
         .reminders li { padding: 8px 0; font-size: 1em; border-bottom: 1px dashed #ffe4e1; display: flex; align-items: center; }
         .reminders li:last-child { border-bottom: none; }
         .reminders li::before { content: '✨'; margin-right: 10px; font-size: 0.9em; }
+        
+        /* Mystery Secret Box */
+        .mystery-box {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px dashed #ffb6c1;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .mystery-box:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.02);
+        }
+
+        .mystery-hint {
+            font-weight: bold;
+            color: #d87093;
+            margin: 0;
+            font-size: 1.1em;
+            transition: opacity 0.3s ease;
+        }
+
+        .mystery-text {
+            filter: blur(8px);
+            opacity: 0.3;
+            font-size: 1.3em;
+            color: #d87093;
+            font-weight: bold;
+            margin: 0;
+            transition: all 0.6s ease;
+            position: absolute; /* Hide structural space until revealed */
+            visibility: hidden;
+        }
+
+        /* When clicked */
+        .mystery-box.revealed .mystery-hint {
+            display: none;
+        }
+
+        .mystery-box.revealed .mystery-text {
+            filter: blur(0);
+            opacity: 1;
+            position: relative;
+            visibility: visible;
+        }
+
         .love-note { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 25px; border-radius: 16px; text-align: center; font-style: italic; font-size: 1.1em; line-height: 1.5; box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3); }
     </style>
 </head>
@@ -163,6 +263,13 @@
         <div class="date-header">
             <h1>Date Invitation 💗</h1>
             <p>Saturday, 28th of March 2026</p>
+        </div>
+
+        <div class="countdown" id="countdown">
+            <div class="time-box"><span id="days">00</span><small>Days</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Secs</small></div>
         </div>
 
         <h2>The Itinerary 🗺️</h2>
@@ -233,13 +340,18 @@
             </ul>
         </div>
 
+        <div class="mystery-box" onclick="this.classList.add('revealed')">
+            <p class="mystery-hint">Tap to reveal a top secret... 🕵️‍♂️✨</p>
+            <p class="mystery-text">Alang alang kita kahwin sekali nak? hihihihihi 💍🙈</p>
+        </div>
+
         <div class="love-note">
             "Be my princess for the day. Let's laugh, smile and enjoy every moment together, and go home without any regrets! ❤️"
         </div>
     </div>
 
     <script>
-        // Logic for the interactive "No" button
+        // --- 1. PROPOSAL LOGIC ---
         let noCount = 0;
         const noMessages = [
             "No",
@@ -247,7 +359,7 @@
             "Pleaseeeee 😭",
             "I'll buy you good food!",
             "You're breaking my heart 💔",
-            "Yes 🥰" // The 5th click turns it into a Yes!
+            "Yes 🥰" 
         ];
 
         function rejectDate() {
@@ -257,43 +369,87 @@
             let propText = document.getElementById('proposal-text');
 
             if (noCount < 5) {
-                // Change the text of the No button
                 btnNo.innerText = noMessages[noCount];
-                
-                // Make the Yes button slightly bigger each time!
                 let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
                 let newSize = parseFloat(currentSize) * 1.2; 
                 btnYes.style.fontSize = newSize + 'px';
                 btnYes.style.padding = (newSize * 0.8) + 'px ' + (newSize * 2) + 'px';
-                
             } else {
-                // On the 5th click, force the No button to become a Yes button
                 btnNo.innerText = noMessages[5];
                 btnNo.classList.remove('btn-no');
                 btnNo.classList.add('btn-yes');
-                btnNo.onclick = acceptDate; // Change its function so it actually accepts!
+                btnNo.onclick = acceptDate; 
                 propText.innerText = "Okay fine, you leave me no choice! 😤💖";
             }
         }
 
         function acceptDate() {
-            // Hide proposal, show success
             document.getElementById('proposal-screen').style.display = 'none';
             document.getElementById('success-screen').style.display = 'flex';
             
-            // Play the music!
             var audio = document.getElementById("bg-music");
             audio.volume = 0.5;
-            audio.play().catch(function(error) {
-                console.log("Audio play failed:", error);
-            });
+            audio.play().catch(e => console.log("Audio block:", e));
+
+            // Start the floating hearts animation
+            startFloatingHearts();
         }
 
         function revealItinerary() {
-            // Hide success, show itinerary
             document.getElementById('success-screen').style.display = 'none';
             document.getElementById('itinerary-screen').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Start the countdown timer
+            startCountdown();
+        }
+
+        // --- 2. FLOATING HEARTS LOGIC ---
+        function startFloatingHearts() {
+            const emojis = ['💖', '🌸', '✨', '💍'];
+            setInterval(() => {
+                const item = document.createElement('div');
+                item.classList.add('floating-item');
+                item.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Random position and fall speed
+                item.style.left = Math.random() * 100 + 'vw';
+                item.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
+                
+                document.body.appendChild(item);
+                
+                // Remove it from the code once it falls off screen
+                setTimeout(() => { item.remove(); }, 7000);
+            }, 400); // Spawns a new item every 400ms
+        }
+
+        // --- 3. COUNTDOWN TIMER LOGIC ---
+        function startCountdown() {
+            // Set the date we're counting down to: March 28, 2026, 10:00:00 AM
+            const targetDate = new Date("March 28, 2026 10:00:00").getTime();
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                // Time calculations
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+                // If the countdown is over, display a message
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "<h2 style='margin:0;'>It's time for our date! 💖🚗</h2>";
+                }
+            }, 1000);
         }
     </script>
 
