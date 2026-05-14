@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Fatin!</title>
+    <title>Happy Birthday Sayang Saya!!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <!-- Confetti Script for the Surprise -->
@@ -34,6 +34,43 @@
             background: linear-gradient(45deg, #6750a4, #b3261e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* 3D Flip Card CSS */
+        .perspective-1000 { 
+            perspective: 1000px; 
+            cursor: pointer; 
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        /* This class is toggled by JavaScript when tapped */
+        .flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 2rem; /* Matches your rounded-[2rem] */
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #fce7f3; /* Soft Pink */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            border: 4px solid #fbcfe8; /* Slightly darker pink border */
         }
     </style>
 </head>
@@ -85,123 +122,281 @@
         
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pb-10">
             <!-- Photos 1 to 39 -->
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/1.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 1">
+            <!-- Note: Even numbers have the 'translate-y-6' class for the staggered scrapbook look -->
+            
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/1.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 1"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 1 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/2.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 2">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/2.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 2"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 2 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/3.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 3">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/3.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 3"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 3 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/4.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 4">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/4.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 4"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 4 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/5.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 5">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/5.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 5"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 5 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/6.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 6">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/6.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 6"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 6 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/7.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 7">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/7.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 7"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 7 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/8.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 8">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/8.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 8"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 8 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/9.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 9">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/9.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 9"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 9 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/10.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 10">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/10.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 10"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 10 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/11.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 11">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/11.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 11"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 11 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/12.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 12">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/12.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 12"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 12 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/13.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 13">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/13.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 13"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 13 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/14.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 14">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/14.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 14"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 14 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/15.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 15">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/15.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 15"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 15 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/16.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 16">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/16.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 16"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 16 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/17.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 17">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/17.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 17"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 17 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/18.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 18">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/18.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 18"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 18 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/19.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 19">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/19.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 19"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 19 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/20.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 20">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/20.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 20"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 20 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/21.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 21">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/21.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 21"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 21 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/22.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 22">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/22.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 22"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 22 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/23.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 23">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/23.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 23"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 23 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/24.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 24">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/24.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 24"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 24 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/25.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 25">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/25.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 25"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 25 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/26.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 26">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/26.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 26"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 26 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/27.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 27">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/27.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 27"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 27 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/28.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 28">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/28.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 28"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 28 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/29.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 29">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/29.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 29"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 29 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/30.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 30">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/30.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 30"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 30 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/31.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 31">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/31.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 31"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 31 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/32.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 32">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/32.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 32"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 32 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/33.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 33">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/33.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 33"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 33 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/34.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 34">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/34.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 34"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 34 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/35.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 35">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/35.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 35"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 35 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/36.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 36">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/36.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 36"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 36 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/37.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 37">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/37.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 37"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 37 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
-                <img src="./photos/38.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 38">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform translate-y-6" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/38.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 38"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 38 here]</p></div>
+                </div>
             </div>
-            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
-                <img src="./photos/39.jpg" loading="lazy" class="object-cover h-full w-full" alt="Fatin Moment 39">
+
+            <div class="perspective-1000 aspect-[3/4] hover:scale-105 transition-transform" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front"><img src="./photos/39.jpg" loading="lazy" class="object-cover h-full w-full" alt="Moment 39"></div>
+                    <div class="flip-card-back"><p class="text-gray-800 font-medium text-sm md:text-base">[Write your memory for photo 39 here]</p></div>
+                </div>
             </div>
+
         </div>
     </section>
 
