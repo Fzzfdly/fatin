@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 21st Birthday!</title>
+    <title>Happy Birthday, Fatin!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <!-- Confetti Script for the Surprise -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fffbff; /* M3 Neutral Variant */
+            background-color: #fffbff;
             color: #1d1a1d;
         }
         .display-font { font-family: 'DM+Serif+Display', serif; }
         
-        /* Floating Animation */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -22,15 +23,13 @@
         }
         .floating { animation: float 4s ease-in-out infinite; }
 
-        /* M3 Surface Container */
         .m3-card {
-            background-color: #f7f2f9; /* M3 Surface Container Low */
+            background-color: #f7f2f9;
             border-radius: 32px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .m3-card:hover { transform: scale(1.02); }
+        .m3-card:hover { transform: translateY(-5px); }
 
-        /* Gradient Text */
         .gradient-text {
             background: linear-gradient(45deg, #6750a4, #b3261e);
             -webkit-background-clip: text;
@@ -38,72 +37,122 @@
         }
     </style>
 </head>
-<body class="p-6 md:p-12 min-h-screen flex flex-col items-center">
+<body class="p-6 md:p-12 min-h-screen flex flex-col items-center overflow-x-hidden">
 
     <!-- Header Section -->
-    <header class="text-center mt-10 mb-16">
-        <span class="px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold uppercase tracking-widest">The Big 2-1</span>
-        <h1 class="display-font text-6xl md:text-8xl mt-6 gradient-text">Happy Birthday, Beautiful.</h1>
-        <p class="text-xl text-gray-600 mt-4 max-w-md mx-auto">Twenty-one years of you making the world a whole lot brighter.</p>
+    <header class="text-center mt-12 mb-20">
+        <span class="px-5 py-2 rounded-full bg-pink-100 text-pink-700 text-sm font-bold uppercase tracking-widest shadow-sm">The Big 2-1</span>
+        <h1 class="display-font text-6xl md:text-8xl mt-6 gradient-text">Happy Birthday, Fatin.</h1>
+        <p class="text-xl text-gray-500 mt-4 max-w-lg mx-auto">Twenty-one years of you making my life absolutely incredible.</p>
     </header>
 
-    <!-- Main Expressive Card -->
-    <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Main Section -->
+    <main class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
         
         <!-- Left: Heartfelt Message -->
-        <div class="m3-card p-10 flex flex-col justify-center">
-            <h2 class="display-font text-4xl mb-4 text-purple-900">To my favorite human,</h2>
+        <div class="m3-card p-12 flex flex-col justify-center shadow-sm">
+            <h2 class="display-font text-4xl mb-6 text-purple-900 leading-tight">To my Fatin,</h2>
             <p class="text-lg leading-relaxed text-gray-700">
                 Watching you grow into the person you are today has been the greatest highlight of my life. 
-                21 isn't just a number—it’s the start of your most exciting chapter yet. 
-                I hope today is filled with as much laughter as you give to me every single day.
+                21 isn't just a milestone—it’s the start of your most exciting chapter yet. 
+                I hope today is filled with as much joy and laughter as you give to me every single day.
             </p>
-            <div class="mt-8 flex items-center gap-3">
-                <div class="h-12 w-12 bg-pink-200 rounded-full flex items-center justify-center text-2xl">❤️</div>
-                <p class="font-bold text-pink-600">I love you more than words can say.</p>
+            <div class="mt-8 flex items-center gap-4">
+                <div class="h-14 w-14 bg-pink-200 rounded-full flex items-center justify-center text-3xl shadow-inner">❤️</div>
+                <p class="font-bold text-pink-600 text-lg">Always and forever.</p>
             </div>
         </div>
 
-        <!-- Right: Fun/Expressive Side -->
-        <div class="bg-purple-900 rounded-[32px] p-10 text-white flex flex-col items-center justify-center text-center relative overflow-hidden">
-            <!-- Decorative circle -->
-            <div class="absolute -top-10 -right-10 h-32 w-32 bg-purple-700 rounded-full opacity-50"></div>
+        <!-- Right: Surprise Section -->
+        <div class="bg-purple-900 rounded-[32px] p-12 text-white flex flex-col items-center justify-center text-center relative overflow-hidden shadow-xl">
+            <div class="absolute -top-10 -right-10 h-40 w-40 bg-purple-700 rounded-full opacity-30"></div>
+            <div class="absolute -bottom-10 -left-10 h-32 w-32 bg-pink-500 rounded-full opacity-20"></div>
             
-            <div class="floating text-8xl mb-6">✨</div>
-            <h3 class="text-3xl font-bold mb-2">Cheers to 21!</h3>
-            <p class="opacity-80 mb-6">Finally legal! (Technically... 😉)</p>
+            <div class="floating text-8xl mb-8">🎁</div>
+            <h3 class="text-3xl font-bold mb-3 italic">A Special Wish for You</h3>
+            <p class="opacity-75 mb-8 max-w-xs">I wanted to create something as unique as you are. Press the button below!</p>
             
-            <button onclick="alert('Pop! 🍾 Check your texts for your surprise gift!')" 
-                    class="bg-pink-400 hover:bg-pink-300 text-purple-950 font-bold py-4 px-8 rounded-2xl transition-all shadow-lg active:scale-95">
-                TAP FOR A SURPRISE
+            <button id="surpriseBtn" 
+                    class="bg-pink-400 hover:bg-pink-300 text-purple-950 font-bold py-5 px-10 rounded-2xl transition-all shadow-lg active:scale-90 text-lg">
+                TAP FOR A SURPRISE!
             </button>
         </div>
-
     </main>
 
     <!-- Photo Gallery / Moments Section -->
-    <section class="mt-20 w-full max-w-4xl text-center">
-        <h2 class="display-font text-4xl mb-10">Our Favorite Moments</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <!-- Replace these placeholder images with your own URLs -->
-            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:rotate-2 transition-transform">
-                <img src="https://via.placeholder.com/400x400?text=Us+1" class="object-cover h-full w-full" alt="Memory 1">
+    <section class="mt-28 w-full max-w-5xl text-center">
+        <h2 class="display-font text-5xl mb-4">Our Favorite Moments</h2>
+        <p class="text-gray-500 mb-12 italic">Every memory with you is a treasure.</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- 8 Placeholders for Moments -->
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
+                <img src="https://via.placeholder.com/600x800?text=Moment+1" class="object-cover h-full w-full" alt="Fatin Moment 1">
             </div>
-            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:-rotate-2 transition-transform mt-4">
-                <img src="https://via.placeholder.com/400x400?text=Us+2" class="object-cover h-full w-full" alt="Memory 2">
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
+                <img src="https://via.placeholder.com/600x800?text=Moment+2" class="object-cover h-full w-full" alt="Fatin Moment 2">
             </div>
-            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:rotate-2 transition-transform">
-                <img src="https://via.placeholder.com/400x400?text=Us+3" class="object-cover h-full w-full" alt="Memory 3">
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
+                <img src="https://via.placeholder.com/600x800?text=Moment+3" class="object-cover h-full w-full" alt="Fatin Moment 3">
             </div>
-            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:-rotate-2 transition-transform mt-4">
-                <img src="https://via.placeholder.com/400x400?text=Us+4" class="object-cover h-full w-full" alt="Memory 4">
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
+                <img src="https://via.placeholder.com/600x800?text=Moment+4" class="object-cover h-full w-full" alt="Fatin Moment 4">
+            </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
+                <img src="https://via.placeholder.com/600x800?text=Moment+5" class="object-cover h-full w-full" alt="Fatin Moment 5">
+            </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
+                <img src="https://via.placeholder.com/600x800?text=Moment+6" class="object-cover h-full w-full" alt="Fatin Moment 6">
+            </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md">
+                <img src="https://via.placeholder.com/600x800?text=Moment+7" class="object-cover h-full w-full" alt="Fatin Moment 7">
+            </div>
+            <div class="aspect-[3/4] bg-gray-100 rounded-[2rem] overflow-hidden hover:scale-105 transition-transform shadow-md translate-y-6">
+                <img src="https://via.placeholder.com/600x800?text=Moment+8" class="object-cover h-full w-full" alt="Fatin Moment 8">
             </div>
         </div>
     </section>
 
-    <footer class="mt-24 mb-12 text-gray-400 text-sm">
-        Made with ❤️ specifically for your 21st.
+    <!-- Footer -->
+    <footer class="mt-40 mb-12 text-center">
+        <p class="text-gray-400 text-sm tracking-wide">
+            Made with ❤️ specifically for your 21st, 
+            <br>
+            <span class="text-purple-600 font-bold text-lg">by your dearest, Faiz.</span>
+        </p>
     </footer>
+
+    <script>
+        const btn = document.getElementById('surpriseBtn');
+
+        btn.addEventListener('click', () => {
+            // High-end confetti burst
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              var particleCount = 50 * (timeLeft / duration);
+              // since particles fall down, start a bit higher than random
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            // Change button text after click
+            btn.innerHTML = "I LOVE YOU! 💖";
+            btn.classList.add('bg-green-400');
+        });
+    </script>
 
 </body>
 </html>
