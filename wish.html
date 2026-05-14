@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wish For You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f2f9; /* Soft M3 background */
+            color: #1d1a1d;
+        }
+        .display-font { font-family: 'DM+Serif+Display', serif; }
+        
+        .letter-card {
+            background-color: #fffbff;
+            border-radius: 32px;
+            box-shadow: 0 10px 40px -10px rgba(103, 80, 164, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #6750a4, #b3261e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12 min-h-screen flex flex-col items-center">
+
+    <!-- Back Button -->
+    <div class="w-full max-w-3xl mb-8">
+        <a href="index.html" class="inline-flex items-center text-purple-700 hover:text-purple-900 font-bold transition-colors">
+            <span class="mr-2">←</span> Back to Memories
+        </a>
+    </div>
+
+    <!-- The Letter -->
+    <main class="w-full max-w-3xl letter-card p-10 md:p-16 relative overflow-hidden">
+        <!-- Decorative corner accents -->
+        <div class="absolute -top-16 -left-16 h-40 w-40 bg-pink-100 rounded-full opacity-50"></div>
+        <div class="absolute -bottom-16 -right-16 h-40 w-40 bg-purple-100 rounded-full opacity-50"></div>
+
+        <div class="relative z-10">
+            <h1 class="display-font text-5xl md:text-6xl mb-10 gradient-text text-center">My Letter to You</h1>
+            
+            <!-- WRITE YOUR LONG MESSAGE HERE -->
+            <div class="text-lg md:text-xl leading-loose text-gray-700 space-y-6">
+                
+                <p>
+                    Dear Fatin,
+                </p>
+
+                <p>
+                    [Write your first paragraph here. You can make it as long as you want.]
+                </p>
+
+                <p>
+                    [Write your second paragraph here. Since you are on different sides of the world right now, this is the perfect spot to talk about how much you are looking forward to seeing her again!]
+                </p>
+
+                <p>
+                    [Write your third paragraph here. Keep adding as many &lt;p&gt; tags as you need for your paragraphs.]
+                </p>
+
+                <p class="mt-12 font-bold text-purple-900">
+                    With all my love, <br>
+                    Faiz
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-16 text-center">
+        <p class="text-gray-400 text-sm tracking-wide">
+            Happy 21st Birthday Sayang.
+        </p>
+    </footer>
+
+</body>
+</html>
