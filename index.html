@@ -3,518 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question... 💗</title>
+    <title>Happy 21st Birthday!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
-        /* Animated Gradient Background */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background: linear-gradient(-45deg, #ffc0cb, #ffe4e1, #ffb6c1, #ff69b4);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #4a4a4a;
-            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fffbff; /* M3 Neutral Variant */
+            color: #1d1a1d;
         }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Glassmorphism Container */
-        .container {
-            max-width: 700px;
-            width: 95%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            padding: 35px 25px;
-            text-align: center;
-            box-sizing: border-box;
-            margin: 30px 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Centered Screens (Proposal & Success) */
-        .centered-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 350px;
-        }
-
-        .start-gif {
-            width: 180px;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            color: #d87093;
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            margin-top: 0;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        }
-
-        p.subtitle {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* Buttons */
-        .btn-group {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .btn {
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(216, 112, 147, 0.4);
-        }
-
-        /* Pulsing Yes Button */
-        .btn-yes {
-            background: linear-gradient(135deg, #d87093, #ff69b4);
-            animation: pulseGlow 2s infinite;
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(216, 112, 147, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(216, 112, 147, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(216, 112, 147, 0); }
-        }
-
-        .btn-yes:hover {
-            transform: translateY(-3px) scale(1.05);
-            animation: none;
-            box-shadow: 0 6px 20px rgba(216, 112, 147, 0.6);
-        }
-
-        /* No Button */
-        .btn-no {
-            background: #e0e0e0;
-            color: #666;
-            box-shadow: none;
-            position: relative;
-        }
-
-        .btn-no:hover {
-            background: #d5d5d5;
-        }
-
-        /* Shaking Animation for No Button */
-        .shake {
-            animation: shakeBtn 0.4s ease-in-out;
-        }
-
-        @keyframes shakeBtn {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-8px) rotate(-3deg); }
-            50% { transform: translateX(8px) rotate(3deg); }
-            75% { transform: translateX(-8px) rotate(-3deg); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Floating Broken Hearts Animation */
-        .broken-heart {
-            position: fixed;
-            font-size: 2.5rem;
-            pointer-events: none;
-            animation: floatUp 2s ease-out forwards;
-            z-index: 100;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-150px) scale(1.5); opacity: 0; }
-        }
-
-        /* Success Screen */
-        #success-screen, #itinerary-screen {
-            display: none;
-        }
-
-        .success-gif {
-            width: 200px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        /* Floating Happy Hearts Animation */
-        .floating-item {
-            position: fixed;
-            top: -10vh;
-            font-size: 1.5rem;
-            pointer-events: none;
-            animation: floatDown linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes floatDown {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
-
-        /* Countdown Timer */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .time-box {
-            background: rgba(216, 112, 147, 0.1);
-            padding: 10px;
-            border-radius: 12px;
-            color: #d87093;
-            border: 1px solid rgba(216, 112, 147, 0.3);
-            min-width: 55px;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
-        }
-
-        .time-box span {
-            display: block;
-            font-size: 1.6em;
-            font-weight: bold;
-        }
-
-        .time-box small {
-            font-size: 0.7em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #888;
-            font-weight: bold;
-        }
-
-        /* Itinerary Styling */
-        #itinerary-screen { animation: fadeIn 0.8s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .date-header { border-bottom: 2px dashed #ffb6c1; padding-bottom: 15px; margin-bottom: 20px; }
-        .date-header p { font-size: 1.1em; color: #d87093; font-weight: bold; margin: 5px 0; letter-spacing: 1px; }
-        h2 { color: #d87093; font-size: 1.4em; margin-top: 10px; margin-bottom: 20px; }
-        .timeline { display: flex; flex-direction: column; gap: 12px; margin-bottom: 35px; text-align: left; }
-        .timeline-item { display: flex; align-items: center; background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(255, 255, 255, 0.9); padding: 14px 18px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.2s ease; }
-        .timeline-item:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.95); box-shadow: 0 6px 15px rgba(216, 112, 147, 0.15); }
-        .time-badge { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 0.9em; min-width: 70px; text-align: center; margin-right: 18px; box-shadow: 0 2px 5px rgba(216, 112, 147, 0.3); }
-        .task-content { font-size: 1.05em; color: #4a4a4a; font-weight: 500; line-height: 1.4; }
+        .display-font { font-family: 'DM+Serif+Display', serif; }
         
-        .reminders { background: rgba(255, 255, 255, 0.6); padding: 20px; border-radius: 16px; margin-bottom: 25px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02); text-align: left; }
-        .reminders ul { list-style-type: none; padding: 0; margin: 0; }
-        .reminders li { padding: 8px 0; font-size: 1em; border-bottom: 1px dashed #ffe4e1; display: flex; align-items: center; }
-        .reminders li:last-child { border-bottom: none; }
-        .reminders li::before { content: '✨'; margin-right: 10px; font-size: 0.9em; }
-        
-        /* Mystery Secret Box */
-        .mystery-box {
-            background: rgba(255, 255, 255, 0.6);
-            border: 2px dashed #ffb6c1;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-align: center;
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
+        .floating { animation: float 4s ease-in-out infinite; }
 
-        .mystery-box:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: scale(1.02);
+        /* M3 Surface Container */
+        .m3-card {
+            background-color: #f7f2f9; /* M3 Surface Container Low */
+            border-radius: 32px;
+            transition: transform 0.3s ease;
         }
+        .m3-card:hover { transform: scale(1.02); }
 
-        .mystery-hint {
-            font-weight: bold;
-            color: #d87093;
-            margin: 0;
-            font-size: 1.1em;
-            transition: opacity 0.3s ease;
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, #6750a4, #b3261e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .mystery-text {
-            filter: blur(8px);
-            opacity: 0.3;
-            font-size: 1.3em;
-            color: #d87093;
-            font-weight: bold;
-            margin: 0;
-            transition: all 0.6s ease;
-            position: absolute; 
-            visibility: hidden;
-        }
-
-        .mystery-box.revealed .mystery-hint { display: none; }
-        .mystery-box.revealed .mystery-text { filter: blur(0); opacity: 1; position: relative; visibility: visible; }
-
-        .love-note { background: linear-gradient(135deg, #d87093, #ff69b4); color: white; padding: 25px; border-radius: 16px; text-align: center; font-style: italic; font-size: 1.1em; line-height: 1.5; box-shadow: 0 4px 15px rgba(216, 112, 147, 0.3); }
     </style>
 </head>
-<body>
+<body class="p-6 md:p-12 min-h-screen flex flex-col items-center">
 
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Header Section -->
+    <header class="text-center mt-10 mb-16">
+        <span class="px-4 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-bold uppercase tracking-widest">The Big 2-1</span>
+        <h1 class="display-font text-6xl md:text-8xl mt-6 gradient-text">Happy Birthday, Beautiful.</h1>
+        <p class="text-xl text-gray-600 mt-4 max-w-md mx-auto">Twenty-one years of you making the world a whole lot brighter.</p>
+    </header>
 
-    <div class="container centered-screen" id="proposal-screen">
-        <img src="https://media1.tenor.com/m/Eazcnx5O-bgAAAAC/dudu-dudu-cute.gif" class="start-gif" id="start-gif">
+    <!-- Main Expressive Card -->
+    <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
         
-        <h1>Hi Fatinsayaaa! 💗</h1>
-        <p class="subtitle" id="proposal-text">May I take my princess on a date this Saturday?</p>
-        
-        <div class="btn-group">
-            <button class="btn btn-yes" id="btn-yes" onclick="acceptDate()">Yes! 🥰</button>
-            <button class="btn btn-no" id="btn-no" onclick="rejectDate()">No</button>
-        </div>
-    </div>
-
-    <div class="container centered-screen" id="success-screen">
-        <img src="https://media1.tenor.com/m/gUiu1zyxfzYAAAAC/bear-kiss-bear-kisses.gif" alt="Cute Bears Kissing" class="success-gif">
-        <h1>Yeayyy! 🎉</h1>
-        <p class="subtitle">Thank you for saying yes! Tak sabar nak dating dengan awak!</p>
-        <button class="btn btn-yes" onclick="revealItinerary()">Tekan Ciniii! 🗺️</button>
-    </div>
-
-    <div class="container" id="itinerary-screen">
-        <div class="date-header">
-            <h1>Date Invitation 💗</h1>
-            <p>Saturday, 28th of March 2026</p>
-        </div>
-
-        <div class="countdown" id="countdown">
-            <div class="time-box"><span id="days">00</span><small>Days</small></div>
-            <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
-            <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
-            <div class="time-box"><span id="seconds">00</span><small>Secs</small></div>
-        </div>
-
-        <h2>The Itinerary 🗺️</h2>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="time-badge">10:00 AM</div>
-                <div class="task-content">👸🏼🚗 Pick Up My Princess 💗</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">10:30 AM</div>
-                <div class="task-content">🥞🫖 Breakfast at Tea Garden!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">11:00 AM</div>
-                <div class="task-content">📸🌳 Pictures at Parkland!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">12:00 PM</div>
-                <div class="task-content">🏦🛍️ Singgah Maybank and City Trading</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">12:30 PM</div>
-                <div class="task-content">🐾🚶‍♀️ Jalan Jalan at Taman depan City Trading (also do the cop jari! 🖐️)</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">1:00 PM</div>
-                <div class="task-content">🎞️🤪 Photobooth Kluang Mall</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">1:10 PM</div>
-                <div class="task-content">🍰☕ Secret Recipe Kluang Mall</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">1:40 PM</div>
-                <div class="task-content">🕌📿 Solat Zohor</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">2:10 PM</div>
-                <div class="task-content">👗👠 Sandals/Shoes and Baju Hunting!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">3:30 PM</div>
-                <div class="task-content">☕📖 Jalan from KM to Kenangan Coffee and Book Updates!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">5:00 PM</div>
-                <div class="task-content">🍔🔥 Woodfire</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">5:30 PM</div>
-                <div class="task-content">🍦🏪 Family Mart!</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-badge">6:00 PM</div>
-                <div class="task-content">🥀🚗 Balik Rumahh</div>
+        <!-- Left: Heartfelt Message -->
+        <div class="m3-card p-10 flex flex-col justify-center">
+            <h2 class="display-font text-4xl mb-4 text-purple-900">To my favorite human,</h2>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Watching you grow into the person you are today has been the greatest highlight of my life. 
+                21 isn't just a number—it’s the start of your most exciting chapter yet. 
+                I hope today is filled with as much laughter as you give to me every single day.
+            </p>
+            <div class="mt-8 flex items-center gap-3">
+                <div class="h-12 w-12 bg-pink-200 rounded-full flex items-center justify-center text-2xl">❤️</div>
+                <p class="font-bold text-pink-600">I love you more than words can say.</p>
             </div>
         </div>
 
-        <div class="reminders">
-            <h2 style="text-align: center; margin-top: 0;">Reminders 📝</h2>
-            <ul>
-                <li>Wear our promise ring! 💍</li>
-                <li>Bring our book and stationary! as well as coloured pencil! 📚</li>
-                <li>Bring a water bottle, tissue and polysterin cup for the water color 💧</li>
-                <li>Do the 1-10 Trend! 🎬</li>
-                <li>Bring an umbrella, and also a cap just in case! ☔</li>
-            </ul>
-        </div>
-
-        <div class="mystery-box" onclick="this.classList.add('revealed')">
-            <p class="mystery-hint">Tekan sini! 🕵️‍♂️✨</p>
-            <p class="mystery-text">Alang alang kita kahwin sekali nak? hihihihihi 💍🙈</p>
-        </div>
-
-        <div class="love-note">
-            "Be my princess for the day. Let's laugh, smile and enjoy every moment together, and go home without any regrets! ❤️"
-        </div>
-    </div>
-
-    <script>
-        // --- 1. PROPOSAL LOGIC ---
-        let noCount = 0;
-        const noMessages = [
-            "No",
-            "Will you consider? 🥺",
-            "Pleaseeeee 😭",
-            "I'm gonna cryyy!",
-            "You made me cryy :(",
-            "Yes 🥰" 
-        ];
-
-        function rejectDate() {
-            noCount++;
-            let btnNo = document.getElementById('btn-no');
-            let btnYes = document.getElementById('btn-yes');
-            let propText = document.getElementById('proposal-text');
-            let startGif = document.getElementById('start-gif');
-
-            // Trigger the shake animation
-            btnNo.classList.remove('shake');
-            void btnNo.offsetWidth; // Force a browser reflow to restart animation
-            btnNo.classList.add('shake');
-
-            // Spawn floating broken hearts
-            spawnBrokenHearts();
-
-            if (noCount < 5) {
-                btnNo.innerText = noMessages[noCount];
-                
-                // Grow the Yes button
-                let currentSize = window.getComputedStyle(btnYes).getPropertyValue('font-size');
-                let newSize = parseFloat(currentSize) * 1.2; 
-                btnYes.style.fontSize = newSize + 'px';
-                btnYes.style.padding = (newSize * 0.8) + 'px ' + (newSize * 2) + 'px';
-                
-                // FIXED: Change the gif to crying bear on the 4th click
-                if(noCount === 4) {
-                    startGif.src = "https://media.tenor.com/QOzMqPvW8PUAAAAi/love-you.gif";
-                }
-
-            } else {
-                btnNo.innerText = noMessages[5];
-                btnNo.classList.remove('btn-no');
-                btnNo.classList.add('btn-yes');
-                btnNo.onclick = acceptDate; 
-                propText.innerText = "Takboyeh takboyeh! kene tekan yes jugak! 😤💖";
-            }
-        }
-
-        function spawnBrokenHearts() {
-            for(let i=0; i<3; i++) {
-                let heart = document.createElement('div');
-                heart.classList.add('broken-heart');
-                heart.innerText = '💔';
-                // Random position near the bottom center
-                heart.style.left = (Math.random() * 40 + 30) + 'vw'; 
-                heart.style.top = '80vh';
-                document.body.appendChild(heart);
-                
-                // Remove from memory after animation
-                setTimeout(() => { heart.remove(); }, 2000);
-            }
-        }
-
-        function acceptDate() {
-            document.getElementById('proposal-screen').style.display = 'none';
-            document.getElementById('success-screen').style.display = 'flex';
+        <!-- Right: Fun/Expressive Side -->
+        <div class="bg-purple-900 rounded-[32px] p-10 text-white flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute -top-10 -right-10 h-32 w-32 bg-purple-700 rounded-full opacity-50"></div>
             
-            var audio = document.getElementById("bg-music");
-            audio.volume = 0.5;
-            audio.play().catch(e => console.log("Audio block:", e));
-
-            // Start the floating happy hearts animation
-            startFloatingHearts();
-        }
-
-        function revealItinerary() {
-            document.getElementById('success-screen').style.display = 'none';
-            document.getElementById('itinerary-screen').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            <div class="floating text-8xl mb-6">✨</div>
+            <h3 class="text-3xl font-bold mb-2">Cheers to 21!</h3>
+            <p class="opacity-80 mb-6">Finally legal! (Technically... 😉)</p>
             
-            // Start the countdown timer
-            startCountdown();
-        }
+            <button onclick="alert('Pop! 🍾 Check your texts for your surprise gift!')" 
+                    class="bg-pink-400 hover:bg-pink-300 text-purple-950 font-bold py-4 px-8 rounded-2xl transition-all shadow-lg active:scale-95">
+                TAP FOR A SURPRISE
+            </button>
+        </div>
 
-        // --- 2. FLOATING HEARTS LOGIC ---
-        function startFloatingHearts() {
-            const emojis = ['💖', '🌸', '✨', '💍'];
-            setInterval(() => {
-                const item = document.createElement('div');
-                item.classList.add('floating-item');
-                item.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                
-                // Random position and fall speed
-                item.style.left = Math.random() * 100 + 'vw';
-                item.style.animationDuration = (Math.random() * 3 + 4) + 's'; 
-                
-                document.body.appendChild(item);
-                
-                setTimeout(() => { item.remove(); }, 7000);
-            }, 400); 
-        }
+    </main>
 
-        // --- 3. COUNTDOWN TIMER LOGIC ---
-        function startCountdown() {
-            const targetDate = new Date("March 28, 2026 10:00:00").getTime();
+    <!-- Photo Gallery / Moments Section -->
+    <section class="mt-20 w-full max-w-4xl text-center">
+        <h2 class="display-font text-4xl mb-10">Our Favorite Moments</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Replace these placeholder images with your own URLs -->
+            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:rotate-2 transition-transform">
+                <img src="https://via.placeholder.com/400x400?text=Us+1" class="object-cover h-full w-full" alt="Memory 1">
+            </div>
+            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:-rotate-2 transition-transform mt-4">
+                <img src="https://via.placeholder.com/400x400?text=Us+2" class="object-cover h-full w-full" alt="Memory 2">
+            </div>
+            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:rotate-2 transition-transform">
+                <img src="https://via.placeholder.com/400x400?text=Us+3" class="object-cover h-full w-full" alt="Memory 3">
+            </div>
+            <div class="aspect-square bg-gray-200 rounded-3xl overflow-hidden hover:-rotate-2 transition-transform mt-4">
+                <img src="https://via.placeholder.com/400x400?text=Us+4" class="object-cover h-full w-full" alt="Memory 4">
+            </div>
+        </div>
+    </section>
 
-            const x = setInterval(function() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("days").innerText = days.toString().padStart(2, '0');
-                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "<h2 style='margin:0;'>It's time for our date! 💖🚗</h2>";
-                }
-            }, 1000);
-        }
-    </script>
+    <footer class="mt-24 mb-12 text-gray-400 text-sm">
+        Made with ❤️ specifically for your 21st.
+    </footer>
 
 </body>
 </html>
